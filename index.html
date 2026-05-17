@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Елена — Магия для каждого | Предсказание дня</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,12 +13,13 @@
         }
 
         body {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Source Sans Pro', sans-serif;
             min-height: 100vh;
             background: #1ca699;
             color: #f4e4c1;
             position: relative;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .bg-animation {
@@ -99,21 +100,24 @@
         }
 
         .expert-name {
-            font-family: 'Cinzel', serif;
+            font-family: 'Oswald', sans-serif;
             font-size: 2.5em;
             font-weight: 700;
             color: #d4af37;
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
             margin-bottom: 10px;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
         .channel-name {
-            font-family: 'Cinzel', serif;
+            font-family: 'Oswald', sans-serif;
             font-size: 1.3em;
+            font-weight: 500;
             color: #f4e4c1;
             margin-bottom: 15px;
             opacity: 0.9;
+            letter-spacing: 2px;
         }
 
         .divider {
@@ -126,21 +130,25 @@
         .main-content {
             text-align: center;
             padding: 40px 20px;
+            position: relative;
         }
 
         .title {
-            font-family: 'Cinzel', serif;
+            font-family: 'Oswald', sans-serif;
             font-size: 1.8em;
+            font-weight: 600;
             color: #d4af37;
             margin-bottom: 30px;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .tarot-card-container {
             position: relative;
             width: 320px;
             height: 520px;
-            margin: 40px auto;
+            margin: 0 auto 40px auto;
             perspective: 1500px;
         }
 
@@ -236,11 +244,12 @@
         }
 
         .card-number {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2em;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3em;
+            font-weight: 600;
             color: #0d2818;
-            font-weight: 700;
             opacity: 0.7;
+            letter-spacing: 2px;
         }
 
         .card-image {
@@ -260,35 +269,43 @@
         }
 
         .card-name {
-            font-family: 'Cinzel', serif;
+            font-family: 'Oswald', sans-serif;
             font-size: 1.6em;
-            color: #0d2818;
             font-weight: 700;
+            color: #0d2818;
             text-align: center;
             margin: 10px 0;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .card-meaning {
-            font-size: 1.2em;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            font-style: italic;
             color: #1a4d2e;
             line-height: 1.5;
-            font-style: italic;
-            font-weight: 600;
+        }
+
+        .button-container {
+            margin: 30px 0;
+            position: relative;
+            z-index: 10;
         }
 
         .get-reading-btn {
             display: inline-block;
             padding: 20px 50px;
-            font-family: 'Cinzel', serif;
-            font-size: 1.2em;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1em;
             font-weight: 600;
             color: #0d2818;
             background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            margin: 30px 0;
             box-shadow: 0 5px 25px rgba(212, 175, 55, 0.4);
             transition: all 0.3s ease;
             text-transform: uppercase;
@@ -305,11 +322,12 @@
         }
 
         .prediction-wrapper {
-            min-height: 200px;
-            margin-top: 30px;
+            position: relative;
+            margin-top: 40px;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
+            min-height: 0;
         }
 
         .prediction-wrapper.show {
@@ -318,12 +336,55 @@
         }
 
         .prediction-text {
-            font-size: 1.3em;
-            line-height: 1.8;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1.2em;
+            line-height: 1.9;
             padding: 30px;
             border: 2px solid rgba(212, 175, 55, 0.4);
             border-radius: 15px;
             background: rgba(13, 40, 24, 0.7);
+        }
+
+        .prediction-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+        }
+
+        .prediction-card-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #f4e4c1;
+            margin-bottom: 15px;
+        }
+
+        .prediction-meaning {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-style: italic;
+            color: #d4af37;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .prediction-message {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #f4e4c1;
+            font-size: 1.1em;
+            line-height: 1.9;
+        }
+
+        .prediction-signature {
+            margin-top: 25px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-style: italic;
+            color: #d4af37;
+            font-size: 1.1em;
         }
 
         .cta-section {
@@ -335,16 +396,18 @@
         }
 
         .cta-text {
-            font-size: 1.3em;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1.2em;
             margin-bottom: 25px;
             color: #f4e4c1;
+            line-height: 1.7;
         }
 
         .telegram-btn {
             display: inline-block;
             padding: 18px 40px;
-            font-family: 'Cinzel', serif;
-            font-size: 1.1em;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1em;
             font-weight: 600;
             color: #0d2818;
             background: linear-gradient(135deg, #d4af37 0%, #f4e4c1 100%);
@@ -353,6 +416,8 @@
             box-shadow: 0 5px 25px rgba(212, 175, 55, 0.4);
             transition: all 0.3s ease;
             margin: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .telegram-btn:hover {
@@ -365,7 +430,8 @@
             margin-top: 50px;
             padding: 30px 20px;
             border-top: 1px solid rgba(212, 175, 55, 0.3);
-            font-size: 1.1em;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1em;
             color: #d4af37;
             opacity: 0.8;
         }
@@ -439,9 +505,11 @@
                 </div>
             </div>
 
-            <button class="get-reading-btn" onclick="getPrediction()">
-                Получить предсказание
-            </button>
+            <div class="button-container">
+                <button class="get-reading-btn" onclick="getPrediction()">
+                    Получить предсказание
+                </button>
+            </div>
 
             <div class="prediction-wrapper" id="predictionWrapper">
                 <div class="prediction-text" id="predictionText"></div>
@@ -658,21 +726,11 @@
                     // Show prediction after card flip
                     setTimeout(() => {
                         predictionText.innerHTML = `
-                            <strong style="color: #d4af37; font-family: 'Cinzel', serif; font-size: 1.3em; display: block; margin-bottom: 20px; text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);">
-                                ✦ Послание карт Таро ✦
-                            </strong>
-                            <p style="margin-bottom: 20px; font-size: 1.2em;">
-                                <strong style="color: #f4e4c1; font-family: 'Cinzel', serif;">${selectedCard.number}. ${selectedCard.name}</strong>
-                            </p>
-                            <p style="margin-bottom: 20px; font-style: italic; color: #d4af37; font-size: 1.1em;">
-                                ${selectedCard.meaning}
-                            </p>
-                            <p style="color: #f4e4c1; font-size: 1.15em; line-height: 1.9;">
-                                ${selectedCard.prediction}
-                            </p>
-                            <p style="margin-top: 25px; font-style: italic; color: #d4af37; font-size: 1.1em;">
-                                ✧ С любовью и светом, Елена 🕯️ ✧
-                            </p>
+                            <div class="prediction-title">✦ Послание карт Таро ✦</div>
+                            <div class="prediction-card-name">${selectedCard.number}. ${selectedCard.name}</div>
+                            <div class="prediction-meaning">${selectedCard.meaning}</div>
+                            <div class="prediction-message">${selectedCard.prediction}</div>
+                            <div class="prediction-signature">✧ С любовью и светом, Елена 🕯️ ✧</div>
                         `;
                         predictionWrapper.classList.add('show');
                         
