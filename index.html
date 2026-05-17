@@ -130,7 +130,6 @@
         .main-content {
             text-align: center;
             padding: 40px 20px;
-            position: relative;
         }
 
         .title {
@@ -138,17 +137,22 @@
             font-size: 1.8em;
             font-weight: 600;
             color: #d4af37;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
             text-transform: uppercase;
             letter-spacing: 2px;
+        }
+
+        .card-section {
+            position: relative;
+            margin-bottom: 30px;
         }
 
         .tarot-card-container {
             position: relative;
             width: 320px;
             height: 520px;
-            margin: 0 auto 40px auto;
+            margin: 0 auto;
             perspective: 1500px;
         }
 
@@ -290,7 +294,7 @@
         }
 
         .button-container {
-            margin: 30px 0;
+            margin: 40px 0;
             position: relative;
             z-index: 10;
         }
@@ -321,28 +325,34 @@
             transform: translateY(-1px);
         }
 
-        .prediction-wrapper {
+        .prediction-section {
             position: relative;
             margin-top: 40px;
+            min-height: 300px;
+        }
+
+        .prediction-wrapper {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-            min-height: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            display: none;
         }
 
         .prediction-wrapper.show {
             opacity: 1;
             transform: translateY(0);
+            display: block;
         }
 
         .prediction-text {
             font-family: 'Source Sans Pro', sans-serif;
             font-size: 1.2em;
             line-height: 1.9;
-            padding: 30px;
+            padding: 35px 30px;
             border: 2px solid rgba(212, 175, 55, 0.4);
             border-radius: 15px;
-            background: rgba(13, 40, 24, 0.7);
+            background: rgba(13, 40, 24, 0.8);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
         .prediction-title {
@@ -461,6 +471,10 @@
                 padding: 15px 35px;
                 font-size: 1em;
             }
+            .prediction-text {
+                padding: 25px 20px;
+                font-size: 1.1em;
+            }
         }
     </style>
 </head>
@@ -491,16 +505,18 @@
         <main class="main-content">
             <h2 class="title">✨ Ваше предсказание дня ✨</h2>
             
-            <div class="tarot-card-container">
-                <div class="tarot-card" id="tarotCard">
-                    <div class="card-back"></div>
-                    <div class="card-front" id="cardFront">
-                        <div class="card-number" id="cardNumber">0</div>
-                        <div class="card-image" id="cardImage">
-                            <img src="https://www.sacred-texts.com/tarot/pkt/img/ar00.jpg" alt="Таро карта" id="cardImg">
+            <div class="card-section">
+                <div class="tarot-card-container">
+                    <div class="tarot-card" id="tarotCard">
+                        <div class="card-back"></div>
+                        <div class="card-front" id="cardFront">
+                            <div class="card-number" id="cardNumber">0</div>
+                            <div class="card-image" id="cardImage">
+                                <img src="https://www.sacred-texts.com/tarot/pkt/img/ar00.jpg" alt="Таро карта" id="cardImg">
+                            </div>
+                            <div class="card-name" id="cardName">Шут</div>
+                            <div class="card-meaning" id="cardMeaning">Новые начинания</div>
                         </div>
-                        <div class="card-name" id="cardName">Шут</div>
-                        <div class="card-meaning" id="cardMeaning">Новые начинания</div>
                     </div>
                 </div>
             </div>
@@ -511,8 +527,10 @@
                 </button>
             </div>
 
-            <div class="prediction-wrapper" id="predictionWrapper">
-                <div class="prediction-text" id="predictionText"></div>
+            <div class="prediction-section">
+                <div class="prediction-wrapper" id="predictionWrapper">
+                    <div class="prediction-text" id="predictionText"></div>
+                </div>
             </div>
 
             <div class="cta-section">
@@ -699,11 +717,11 @@
             const predictionWrapper = document.getElementById('predictionWrapper');
             const predictionText = document.getElementById('predictionText');
             
-            // Add shuffle animation
+            // Reset card
             card.classList.remove('flipped');
             card.classList.add('shuffling');
             
-            // Hide prediction
+            // Hide prediction first
             predictionWrapper.classList.remove('show');
             
             setTimeout(() => {
@@ -717,13 +735,14 @@
                 cardName.textContent = selectedCard.name;
                 cardMeaning.textContent = selectedCard.meaning;
                 
-                // Remove shuffle and flip
+                // Remove shuffle
                 card.classList.remove('shuffling');
                 
+                // Flip card
                 setTimeout(() => {
                     card.classList.add('flipped');
                     
-                    // Show prediction after card flip
+                    // Show prediction after flip
                     setTimeout(() => {
                         predictionText.innerHTML = `
                             <div class="prediction-title">✦ Послание карт Таро ✦</div>
@@ -736,9 +755,9 @@
                         
                         // Smooth scroll to prediction
                         setTimeout(() => {
-                            predictionWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 300);
-                    }, 500);
+                            predictionWrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 400);
+                    }, 600);
                 }, 400);
             }, 600);
         }
